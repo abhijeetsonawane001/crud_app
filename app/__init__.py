@@ -1,16 +1,31 @@
 from flask import Flask
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from app.views.hello import hello
+from flask_mail import Mail
 
 db = SQLAlchemy()
+migrate = Migrate()
+mail = Mail()
 
 
 def create_app(config="app.config.ProductionConfig"):
     app = Flask(__name__)
     app.config.from_object(config)
+
+    # Initialize SQLAlchemy Database
     db.init_app(app)
 
-    from app.models import User
+    # Initialize Migrator
+    migrate.init_app(app, db)
 
-    app.register_blueprint(hello)
+    # Initialize Mail
+    mail.init_app(app)
+
+    from app.models import User  # noqa 401
+
+    # Import & Register User blueprint
+    from app.views.user import user
+
+    app.register_blueprint(user)
+
     return app

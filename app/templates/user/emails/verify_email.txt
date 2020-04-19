@@ -1,0 +1,8 @@
+openspot
+
+Hello, {{ full_name }}
+
+Verify your email
+
+Click here to Verify
+{{ link }}

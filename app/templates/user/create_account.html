@@ -1,0 +1,109 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="my-5 row">
+        <div class="offset-xl-2 offset lg-2 md-2 col-xl-8 col-lg-8 col-md-8 col-12">
+            <h2 class="text-center">Create a new account</h2>
+            <div class="os-form-wrapper my-5">
+                <form method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                            {% if form.first_name.errors %}
+                            <div class="form-group has-danger">
+                                {{ form.first_name.label }}
+                                {{ form.first_name(class="form-control is-invalid", placeholder="Enter first name") }}
+                                {% for error in form.first_name.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <div class="form-group has-danger">
+                                {{ form.first_name.label }}
+                                {{ form.first_name(class="form-control", placeholder="Enter first name") }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                            {% if form.last_name.errors %}
+                            <div class="form-group has-danger">
+                                {{ form.last_name.label }}
+                                {{ form.last_name(class="form-control is-invalid", placeholder="Enter last name") }}
+                                {% for error in form.last_name.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <div class="form-group has-danger">
+                                {{ form.last_name.label }}
+                                {{ form.last_name(class="form-control", placeholder="Enter last name") }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-12">
+                            {% if form.email_id.errors %}
+                            <div class="form-group has-danger">
+                                {{ form.email_id.label }}
+                                {{ form.email_id(class="form-control is-invalid", placeholder="Enter email id") }}
+                                {% for error in form.email_id.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <div class="form-group has-danger">
+                                {{ form.email_id.label }}
+                                {{ form.email_id(class="form-control", placeholder="Enter email id") }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                            {% if form.password.errors %}
+                            <div class="form-group has-danger">
+                                {{ form.password.label }}
+                                {{ form.password(class="form-control is-invalid", placeholder="Enter password") }}
+                                {% for error in form.password.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <div class="form-group has-danger">
+                                {{ form.password.label }}
+                                {{ form.password(class="form-control", placeholder="Enter password") }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                            {% if form.confirm_password.errors %}
+                            <div class="form-group has-danger">
+                                {{ form.confirm_password.label }}
+                                {{ form.confirm_password(class="form-control is-invalid", placeholder="Confirm password") }}
+                                {% for error in form.confirm_password.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <div class="form-group has-danger">
+                                {{ form.confirm_password.label }}
+                                {{ form.confirm_password(class="form-control", placeholder="Confirm password") }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mt-3">
+                                {{ form.submit(class="btn btn-primary btn-lg btn-block") }}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="os-link">
+                    <p>Already have an account?<a href="{{ url_for('user.login') }}" class="btn btn-link">Log In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
