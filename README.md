@@ -1,2 +1,2 @@
-# BASIC CRUD APP USING FLASK WEB FRAMEWORK
+## Basic CRUD App using Flask web framework
 ----
