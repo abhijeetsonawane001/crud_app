@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask import Blueprint, flash, redirect, render_template, request, url_for, abort
 from flask_mail import Message
 
 from app import db, mail
@@ -50,7 +50,7 @@ def verify_account():
     email_id = request.args.get("email_id")
     user = User.query.filter_by(email_id=email_id).first()
     if not user:
-        return redirect(url_for(".index"))
+        return abort(404)
     if user.is_active:
         return redirect(url_for(".index"))
 
