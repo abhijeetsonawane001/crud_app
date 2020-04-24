@@ -1,3 +1,2 @@
-# Flask Boilerplate
+# BASIC CRUD APP USING FLASK WEB FRAMEWORK
 ----
-Basic Flask Boilerplate to start flask app.
